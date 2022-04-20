@@ -2,7 +2,6 @@ const {buildSchema}  = require('graphql');
 
 module.exports = buildSchema(`
    
-     
 
     type Users{
         _id:ID!
@@ -29,7 +28,6 @@ module.exports = buildSchema(`
         password:String!
     }
 
-   
     type Trip {
         _id:ID!
         userId:String!
@@ -88,10 +86,33 @@ module.exports = buildSchema(`
         atendees: [inputAtendees]
     }
 
+    type reviews{
+        reviewName:String!
+        reviewEmail:String!
+        reviewCountry:String!
+        reviewText:String!
+    }
+
+
+    input inputReviewData{
+        reviewName:String!
+        reviewEmail:String!
+        reviewCountry:String!
+        reviewText:String!
+    }
+
+    input editReviewData{
+        reviewName:String!
+        reviewEmail:String!
+        reviewCountry:String!
+        reviewText:String!
+    }
+
     type RootQuery{
         getUser(Id:String!):Users!
         getUsersTrip(userid:String!):TripAll!
         getTrip(tripId:String!):Trip!
+        getReview(reviewId:String!):Review!
     }
 
     type RootMutation{
@@ -102,6 +123,7 @@ module.exports = buildSchema(`
         editUserTrip(tripid:String!,tripData:tripInputData!):Trip!
         getUserById(Id:String!):Users!
         deleteTrip(tripId:String!):String!
+        submitReview(inputReview:inputReviewData):Review!
     }
 
     schema {

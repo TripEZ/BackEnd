@@ -167,9 +167,49 @@ module.exports = {
         })
 
         
-
         return "trip deleted";
-    }
+    },
 
-    
+    submitReview: async function({inputReview}){
+        const review = new Reviews({
+            reviewName:inputReview.reviewName,
+            reviewEmail:inputReview.reviewEmail,
+            reviewCountry:inputReview.reviewCountry,
+            reviewText:inputReview.revieText,
+           
+        });
+
+        const submittedReview = await review.save();
+        return {
+            ...submittedReview._doc,
+            _id:submittedReview._id.toString(),
+        }
+    },
+
+    getReview: async function({reviewId}){
+        const review = await Reviews.findById(reviewId);
+
+        if(!review){
+            throw new Error("Not Found");
+        }
+
+        return{
+            ...review._doc,
+            _id:review._id.toString()
+        }
+    },
+
+    deleteReview: async function({reviewId}){
+        const reviewResult =  Reviews.findByIdAndDelete(reviewId,function (err, docs) {
+            if (err){
+                console.log(err)
+            }
+            else{
+                console.log("Deleted : ", docs);
+            }
+        })
+
+        return "review deleted";
+    },
+
 }

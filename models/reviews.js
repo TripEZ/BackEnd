@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const reviewsSchema = new Schema({
+    userId:{
+        type:String,
+        required:true,
+    },
     reviewName:{
         type:String,
         required:true,

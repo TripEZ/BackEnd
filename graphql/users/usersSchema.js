@@ -124,6 +124,7 @@ module.exports = buildSchema(`
         getUserById(Id:String!):Users!
         deleteTrip(tripId:String!):String!
         submitReview(inputReview:inputReviewData):Review!
+        deleteReview(reviewId:String!):String!
     }
 
     schema {

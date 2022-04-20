@@ -86,7 +86,7 @@ module.exports = buildSchema(`
         atendees: [inputAtendees]
     }
 
-    type reviews{
+    type Review{
         reviewName:String!
         reviewEmail:String!
         reviewCountry:String!

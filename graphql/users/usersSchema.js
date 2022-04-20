@@ -87,14 +87,21 @@ module.exports = buildSchema(`
     }
 
     type Review{
+        _id:ID!
+        userId:String!
         reviewName:String!
         reviewEmail:String!
         reviewCountry:String!
         reviewText:String!
     }
 
+    type allReviews{
+        reviews : [Review!]!
+    }
 
     input inputReviewData{
+        _id:ID!
+        userId:String!
         reviewName:String!
         reviewEmail:String!
         reviewCountry:String!
@@ -102,6 +109,8 @@ module.exports = buildSchema(`
     }
 
     input editReviewData{
+        _id:ID!
+        userId:String!
         reviewName:String!
         reviewEmail:String!
         reviewCountry:String!
